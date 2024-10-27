@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         
-        Grid {
+        Grid(verticalSpacing: 20) {
             GridRow {
                 VStack(alignment: .leading) {
                     Text("List")
@@ -27,15 +27,22 @@ struct ContentView: View {
                     DisclosureListView(items: $items)
                 }
             }
+            
             GridRow {
                 VStack(alignment: .leading) {
                     Text("Table")
                         .font(.title3)
+                    Text("Can't edit items.")
+                        .textScale(.secondary)
+                        .foregroundStyle(.secondary)
                     TableView(items: $items)
                 }
                 VStack(alignment: .leading) {
                     Text("Table – Disclosure")
                         .font(.title3)
+                    Text("Can't reorder items.")
+                        .textScale(.secondary)
+                        .foregroundStyle(.secondary)
                     DisclosureTableView(items: $items)
                 }
             }
