@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+## Xcode
+[Bb]uild
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+default.profraw
+
+# Swift Package Manager
+.build
+.swiftpm
