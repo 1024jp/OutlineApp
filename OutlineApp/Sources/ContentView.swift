@@ -9,15 +9,38 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var items: [Item] = Item.sampleItems
+    
+    
     var body: some View {
         
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Grid {
+            GridRow {
+                VStack(alignment: .leading) {
+                    Text("List")
+                        .font(.title3)
+                    ListView(items: $items)
+                }
+                VStack(alignment: .leading) {
+                    Text("List – Disclosure")
+                        .font(.title3)
+                    DisclosureListView(items: $items)
+                }
+            }
+            GridRow {
+                VStack(alignment: .leading) {
+                    Text("Table")
+                        .font(.title3)
+                    TableView(items: $items)
+                }
+                VStack(alignment: .leading) {
+                    Text("Table – Disclosure")
+                        .font(.title3)
+                    DisclosureTableView(items: $items)
+                }
+            }
         }
-        .padding()
+        .scenePadding()
     }
 }
 
