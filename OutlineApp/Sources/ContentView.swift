@@ -26,6 +26,11 @@ struct ContentView: View {
                         .font(.title3)
                     DisclosureListView(items: $items)
                 }
+                VStack(alignment: .leading) {
+                    Text("List – Outline Group")
+                        .font(.title3)
+                    OutlineGroupView(items: $items)
+                }
             }
             
             GridRow {
