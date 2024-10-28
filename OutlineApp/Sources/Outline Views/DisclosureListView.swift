@@ -22,6 +22,9 @@ struct DisclosureListView: View {
                     ForEach(children) { child in
                         TextField(text: child.name, label: EmptyView.init)
                     }
+                    .onMove { (from, to) in
+                        children.wrappedValue.move(fromOffsets: from, toOffset: to)
+                    }
                 } label: {
                     TextField(text: item.name, label: EmptyView.init)
                 }
