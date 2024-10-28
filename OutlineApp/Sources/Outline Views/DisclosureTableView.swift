@@ -44,9 +44,21 @@ struct DisclosureTableView: View {
             }
         }
         .onChange(of: self.sortOrder) { (_, newValue) in
-            // FIXME: unwrap sort order
-            let unwrappedOrder: [KeyPathComparator<Item>] = []
-            self.items.sort(using: unwrappedOrder)
+            self.items.sort(using: newValue.map(\.unwrappedComparator))
+        }
+    }
+}
+
+
+private extension KeyPathComparator<Binding<Item>> {
+    
+    /// Manually unwraps `Binding`.
+    var unwrappedComparator: KeyPathComparator<Item> {
+        
+        switch self.keyPath {
+            case \.name.wrappedValue: KeyPathComparator<Item>(\.name, order: self.order)
+            case \.id: KeyPathComparator<Item>(\.id, order: self.order)
+            default: fatalError()
         }
     }
 }
