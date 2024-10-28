@@ -19,13 +19,13 @@ struct DisclosureTableView: View {
     var body: some View {
         
         Table(of: Binding<Item>.self, selection: $selection, sortOrder: $sortOrder, columnCustomization: $columnCustomization) {
-            TableColumn("Name", value: \.name.wrappedValue) {
-                TextField(text: $0.name, label: EmptyView.init)
+            TableColumn("Name", value: \.name.wrappedValue) { item in
+                TextField(text: item.name, label: EmptyView.init)
             }
             .customizationID("name")
             
-            TableColumn("ID", value: \.id) {
-                Text($0.id.uuidString)
+            TableColumn("ID", value: \.id) { item in
+                Text(item.id.uuidString)
                     .foregroundStyle(.secondary)
             }
             .customizationID("id")

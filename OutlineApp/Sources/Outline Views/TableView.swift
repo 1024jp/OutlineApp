@@ -19,13 +19,13 @@ struct TableView: View {
     var body: some View {
         
         Table(self.items, children: \.children, selection: $selection, sortOrder: $sortOrder, columnCustomization: $columnCustomization) {
-            TableColumn("Name", value: \.name) {
-                Text($0.name)
+            TableColumn("Name", value: \.name) { item in
+                Text(item.name)
             }
             .customizationID("name")
             
-            TableColumn("ID", value: \.id) {
-                Text($0.id.uuidString)
+            TableColumn("ID", value: \.id) { item in
+                Text(item.id.uuidString)
                     .foregroundStyle(.secondary)
             }
             .customizationID("id")

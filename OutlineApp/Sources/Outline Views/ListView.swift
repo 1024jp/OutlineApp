@@ -16,8 +16,8 @@ struct ListView: View {
     
     var body: some View {
         
-        List($items, children: \.children, selection: $selection) {
-            TextField(text: $0.name, label: EmptyView.init)
+        List($items, children: \.children, selection: $selection) { item in
+            TextField(text: item.name, label: EmptyView.init)
         }
     }
 }

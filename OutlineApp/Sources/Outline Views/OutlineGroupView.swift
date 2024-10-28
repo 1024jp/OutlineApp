@@ -17,8 +17,8 @@ struct OutlineGroupView: View {
     var body: some View {
         
         List(selection: $selection) {
-            OutlineGroup($items, children: \.children) {
-                TextField(text: $0.name, label: EmptyView.init)
+            OutlineGroup($items, children: \.children) { item in
+                TextField(text: item.name, label: EmptyView.init)
             }
         }
     }
