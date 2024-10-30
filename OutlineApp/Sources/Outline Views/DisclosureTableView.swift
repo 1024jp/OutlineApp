@@ -31,20 +31,36 @@ struct DisclosureTableView: View {
             .customizationID("id")
             
         } rows: {
-            ForEach($items) { item in
-                if let children = Binding<[Item]>(item.children) {
-                    DisclosureTableRow(item, isExpanded: item.isExpanded) {
-                        ForEach(children) { child in
-                            TableRow(child)
-                        }
-                    }
-                } else {
-                    TableRow(item)
-                }
-            }
+            RecursiveTableRows($items)
         }
         .onChange(of: self.sortOrder) { (_, newValue) in
             self.items.sort(using: newValue.map(\.unwrappedComparator))
+        }
+    }
+}
+
+
+private struct RecursiveTableRows: TableRowContent {
+    
+    @Binding var items: [Item]
+    
+    
+    init(_ items: Binding<[Item]>) {
+        
+        self._items = items
+    }
+    
+    
+    var tableRowBody: some TableRowContent<Binding<Item>> {
+        
+        ForEach($items) { item in
+            if let children = Binding(item.children) {
+                DisclosureTableRow(item, isExpanded: item.isExpanded) {
+                    RecursiveTableRows(children)
+                }
+            } else {
+                TableRow(item)
+            }
         }
     }
 }
