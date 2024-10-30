@@ -37,17 +37,14 @@ struct ContentView: View {
                 VStack(alignment: .leading) {
                     Text("Table")
                         .font(.title3)
+                    TableView(items: $items)
                     Text("Can't edit items.")
                         .textScale(.secondary)
                         .foregroundStyle(.secondary)
-                    TableView(items: $items)
                 }
                 VStack(alignment: .leading) {
                     Text("Table – Disclosure")
                         .font(.title3)
-                    Text("Can't reorder items.")
-                        .textScale(.secondary)
-                        .foregroundStyle(.secondary)
                     DisclosureTableView(items: $items)
                 }
             }
