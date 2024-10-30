@@ -7,14 +7,20 @@
 
 import Foundation
 
-struct Item: Identifiable {
+@Observable final class Item: Identifiable {
     
     let id: UUID = .init()
     
     var name: String
-    
     var children: [Item]?
     var isExpanded: Bool = false
+    
+    
+    init(name: String, children: [Item]? = nil) {
+        
+        self.name = name
+        self.children = children
+    }
 }
 
 
