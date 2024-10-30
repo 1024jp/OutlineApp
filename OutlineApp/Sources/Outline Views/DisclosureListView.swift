@@ -42,5 +42,5 @@ struct DisclosureListView: View {
 #Preview {
     @Previewable @State var items = Item.sampleItems
 
-    return ListView(items: $items)
+    return DisclosureListView(items: $items)
 }
