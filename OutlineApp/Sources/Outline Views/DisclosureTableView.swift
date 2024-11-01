@@ -32,7 +32,7 @@ struct DisclosureTableView: View {
             
         } rows: {
             Section("Animal") {
-                RecursiveTableRows($items)
+                RecursiveTableRows(items: $items)
             }
         }
         .onChange(of: self.sortOrder) { (_, newValue) in
@@ -47,18 +47,12 @@ private struct RecursiveTableRows: TableRowContent {
     @Binding var items: [Item]
     
     
-    init(_ items: Binding<[Item]>) {
-        
-        self._items = items
-    }
-    
-    
     var tableRowBody: some TableRowContent<Binding<Item>> {
         
         ForEach($items) { item in
             if let children = Binding(item.children) {
                 DisclosureTableRow(item, isExpanded: item.isExpanded) {
-                    RecursiveTableRows(children)
+                    RecursiveTableRows(items: children)
                 }
             } else {
                 TableRow(item)
