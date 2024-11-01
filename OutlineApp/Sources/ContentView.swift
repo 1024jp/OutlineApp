@@ -35,12 +35,15 @@ struct ContentView: View {
             
             GridRow {
                 VStack(alignment: .leading) {
-                    Text("Table")
-                        .font(.title3)
+                    HStack(alignment: .firstTextBaseline) {
+                        Text("Table")
+                            .font(.title3)
+                        Spacer()
+                        Text("(Can't edit items.)")
+                            .foregroundStyle(.secondary)
+                            .controlSize(.small)
+                    }
                     TableView(items: $items)
-                    Text("Can't edit items.")
-                        .textScale(.secondary)
-                        .foregroundStyle(.secondary)
                 }
                 VStack(alignment: .leading) {
                     Text("Table – Disclosure")
