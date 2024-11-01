@@ -16,9 +16,18 @@ struct DisclosureListView: View {
     
     var body: some View {
         
-        List($items, selection: $selection) { item in
-            RowView(item: item)
+        List(selection: $selection) {
+            Section("Animal") {
+                ForEach($items) { item in
+                    RowView(item: item)
+                }
+            }
         }
+        
+        // If you don't need section headers, you can simply write as follows.
+//        List($items, selection: $selection) { item in
+//            RowView(item: item)
+//        }
     }
 }
 

@@ -31,7 +31,9 @@ struct DisclosureTableView: View {
             .customizationID("id")
             
         } rows: {
-            RecursiveTableRows($items)
+            Section("Animal") {
+                RecursiveTableRows($items)
+            }
         }
         .onChange(of: self.sortOrder) { (_, newValue) in
             self.items.sort(using: newValue.map(\.unwrappedComparator))
