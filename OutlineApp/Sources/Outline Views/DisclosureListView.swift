@@ -44,13 +44,9 @@ private struct RowView: View {
                 ForEach(children) { child in
                     RowView(item: child)
                 }
-                .onMove { (from, to) in
-                    children.wrappedValue.move(fromOffsets: from, toOffset: to)
-                }
             } label: {
                 TextField(text: $item.name, label: EmptyView.init)
             }
-            
         } else {
             TextField(text: $item.name, label: EmptyView.init)
         }
