@@ -26,7 +26,7 @@ import Foundation
 
 extension Item {
     
-    static let sampleItems: [Item] = [
+    @MainActor static let sampleItems: [Item] = [
         Item(name: "Dog", children: [
             Item(name: "Beagle"),
             Item(name: "Dachshund", children: [
