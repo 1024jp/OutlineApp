@@ -29,8 +29,8 @@ extension Item {
     static let sampleItems: [Item] = [
         Item(name: "Dog", children: [
             Item(name: "Beagle"),
-            Item(name: "Dackshund", children: [
-                Item(name: "Mini. Dackshund"),
+            Item(name: "Dachshund", children: [
+                Item(name: "Mini. Dachshund"),
             ]),
         ]),
         Item(name: "Cat"),
